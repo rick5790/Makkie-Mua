@@ -18,23 +18,47 @@
 }
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
 
-nav{display:flex;justify-content:space-between;align-items:center;padding:0 3rem;height:52px;background:rgba(245,237,224,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(196,153,106,0.2);position:sticky;top:0;z-index:100;}
-.nav-logo{font-size:14px;font-weight:500;color:var(--text);letter-spacing:0.02em;}
-.nav-links{display:flex;gap:2rem;}
-.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:0.05em;transition:color .2s;}
-.nav-links a:hover{color:var(--text);}
+nav{display:flex;justify-content:space-between;align-items:center;padding:0 3rem;height:52px;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:0;z-index:100;}
+.nav-logo{font-size:14px;font-weight:500;color:var(--bg);letter-spacing:0.02em;}
 .nav-ig{font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;}
 
 .hero{text-align:center;padding:6rem 2rem 4rem;background:var(--bg);}
+.hero-logo{
+  width:min(68vw,360px);
+  display:block;
+  margin:0 auto 1.1rem;
+  background:transparent;
+  mix-blend-mode:multiply;
+  object-fit:cover;
+  object-position:center;
+  clip-path:inset(0 18% 0 18%);
+  filter:drop-shadow(0 16px 24px rgba(61,38,27,.10));
+}
+.hero-wordmark{
+  width:min(100%,520px);
+  display:block;
+  margin:0 auto 1.2rem;
+}
+.hero-wordmark-art{
+  width:min(100%,520px);
+  display:block;
+  margin:0 auto 1.2rem;
+  background:transparent;
+  object-fit:contain;
+}
 .hero-eyebrow{font-size:12px;color:var(--muted);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.6rem;font-family:'Noto Serif SC',serif;}
 .hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:600;line-height:0.95;letter-spacing:-0.03em;color:var(--text);margin-bottom:1.2rem;}
-.hero-title em{font-style:italic;color:var(--accent);font-weight:400;}
+.hero-title em{font-style:normal;color:var(--text);font-weight:600;}
 .hero-sub{font-size:15px;color:var(--muted);font-weight:300;margin-bottom:2.5rem;}
-.hero-btns{display:flex;gap:1rem;justify-content:center;}
-.btn-dark{background:var(--dark);color:var(--bg);padding:.7rem 1.6rem;border-radius:100px;font-size:13px;text-decoration:none;font-weight:400;transition:background .2s;}
+.hero-actions{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.hero-links{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;}
+.btn-dark{background:var(--dark);color:var(--bg);padding:.7rem 1.6rem;border-radius:100px;font-size:13px;text-decoration:none;font-weight:400;transition:background .2s;border:none;cursor:pointer;font-family:inherit;}
 .btn-dark:hover{background:#3a2010;}
 .btn-ghost{color:var(--accent);font-size:13px;text-decoration:none;display:flex;align-items:center;gap:4px;padding:.7rem 0;}
 .btn-ghost::after{content:'›';font-size:18px;}
+.btn-chip{padding:.5rem .95rem;border-radius:999px;border:1px solid rgba(196,153,106,.28);background:rgba(237,224,204,.55);color:var(--muted);font-size:12px;letter-spacing:.04em;text-decoration:none;transition:background .2s,border-color .2s,color .2s;}
+.btn-chip:hover{background:rgba(237,224,204,.9);border-color:rgba(196,153,106,.48);color:var(--text);}
 
 .products{padding:5rem 2rem 7rem;background:var(--bg);}
 .sec-eye{font-size:11px;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;text-align:center;margin-bottom:.5rem;}
@@ -42,11 +66,27 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:0 3rem
 .sec-sub{font-size:14px;color:var(--muted);text-align:center;font-weight:300;margin-bottom:4rem;}
 
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1080px;margin:0 auto;background:var(--bg2);border-radius:24px;overflow:hidden;}
-.grid-row2{grid-template-columns:repeat(2,1fr);max-width:720px;}
+.grid-row2{grid-template-columns:repeat(3,1fr);max-width:1080px;}
 
 .card{background:var(--card);padding:3rem 2rem 0;text-align:center;cursor:pointer;position:relative;overflow:visible;}
 .card-eye{font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:.3rem;}
 .card-name{font-size:1.05rem;font-weight:500;color:var(--text);margin-bottom:.2rem;font-family:'Noto Serif SC',serif;}
+.card-name-brand{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(2rem,4vw,3.4rem);
+  font-weight:600;
+  line-height:.9;
+  letter-spacing:-.04em;
+  margin-bottom:.6rem;
+}
+.card-name-brand span{
+  display:block;
+}
+.card-brand-logo{
+  width:min(100%,220px);
+  display:block;
+  margin:0 auto .8rem;
+}
 .card-en{font-size:11px;color:var(--muted);margin-bottom:1.8rem;letter-spacing:0.05em;}
 
 .scene{perspective:700px;margin:0 auto;}
@@ -61,48 +101,102 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:0 3rem
 .card-foot{opacity:0;transform:translateY(6px);transition:opacity .3s .1s, transform .3s .1s;padding:1.2rem 0 2.2rem;font-size:11.5px;color:var(--muted);line-height:1.7;}
 .card:hover .card-foot{opacity:1;transform:translateY(0);}
 
-.marquee{background:var(--dark);padding:1.2rem 0;overflow:hidden;white-space:normal;display:flex;flex-direction:column;gap:.6rem;}
-.marquee-inner{display:block;width:max-content;animation:mq 60s ease-in-out infinite;will-change:transform;}
-.mi{display:inline-block;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,237,224,.6);padding:0 2.2rem;font-weight:400;}
-.mi b{color:var(--accent);}
-@keyframes mq{
-  0%{transform:translateX(0);}
-  8%{transform:translateX(0);} /* 停顿 */
+.marquee{display:none;}
+.menu-set{background:var(--dark);padding:4.5rem 2rem;}
+.menu-shell{max-width:1180px;margin:0 auto;padding:2.25rem;border-radius:28px;background:rgba(245,237,224,.06);border:1px solid rgba(245,237,224,.12);box-shadow:0 20px 60px rgba(0,0,0,.16);}
+.menu-head{text-align:center;margin-bottom:2.5rem;}
+.menu-head .sec-eye{margin-bottom:.65rem;color:rgba(245,237,224,.55);}
+.menu-head .sec-title{margin-bottom:.75rem;color:var(--bg);font-family:'Inter',sans-serif;font-size:clamp(2.6rem,7vw,5.4rem);font-weight:600;line-height:.95;letter-spacing:-.03em;}
+.menu-head .sec-sub{max-width:760px;margin:0 auto;color:rgba(245,237,224,.62);}
+.menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;}
+.menu-card{width:100%;padding:1.15rem 1.2rem;border-radius:22px;background:rgba(245,237,224,.05);border:1px solid rgba(245,237,224,.08);display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;cursor:pointer;transition:transform .18s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease;color:inherit;}
+.menu-card:hover{transform:translateY(-2px);background:rgba(245,237,224,.08);border-color:rgba(196,153,106,.34);box-shadow:0 14px 34px rgba(0,0,0,.16);}
+.menu-card-heading{display:flex;flex-direction:column;gap:.25rem;text-align:left;}
+.menu-card-title{font-size:1rem;font-weight:600;color:var(--bg);}
+.menu-card-sub{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);}
+.menu-card-icon{flex:0 0 auto;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,237,224,.6);}
+.menu-templates{display:none;}
+.menu-overlay[hidden]{display:none;}
+.menu-overlay{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:24px;}
+.menu-overlay-backdrop{position:absolute;inset:0;background:rgba(20,10,4,.72);backdrop-filter:blur(10px);}
+.menu-overlay-panel{position:relative;width:min(100%,860px);max-height:min(88vh,920px);overflow:auto;border-radius:28px;background:#f8eee3;color:var(--text);box-shadow:0 28px 90px rgba(0,0,0,.32);padding:1.5rem;}
+.menu-overlay-close{position:sticky;top:0;margin-left:auto;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;border:1px solid rgba(45,31,15,.1);background:rgba(255,255,255,.82);font-size:18px;color:var(--text);backdrop-filter:blur(8px);cursor:pointer;}
+.menu-overlay-header{padding:.4rem 0 1rem;border-bottom:1px solid rgba(45,31,15,.08);margin-bottom:1.2rem;}
+.menu-overlay-header .menu-card-title{font-family:'Inter',sans-serif;font-size:clamp(2.1rem,5vw,3.4rem);font-weight:600;line-height:.95;letter-spacing:-.03em;color:var(--text);margin-bottom:.3rem;}
+.menu-overlay-header .menu-card-sub{font-size:11px;}
+.menu-content ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;color:#4e3729;font-size:15px;line-height:1.7;}
+.menu-content li{margin:0;}
+.menu-addon{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(245,237,224,.08);}
+.menu-overlay-panel .menu-addon{border-top:1px solid rgba(45,31,15,.08);}
+.menu-addon-title{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,237,224,.45);margin-bottom:.55rem;}
+.menu-overlay-panel .menu-addon-title{color:var(--muted);}
+.qr-overlay[hidden]{display:none;}
+.qr-overlay{position:fixed;inset:0;z-index:320;display:grid;place-items:center;padding:24px;}
+.qr-overlay-backdrop{position:absolute;inset:0;background:rgba(20,10,4,.68);backdrop-filter:blur(10px);}
+.qr-overlay-panel{position:relative;width:min(100%,420px);padding:1.5rem;border-radius:28px;background:#f8eee3;color:var(--text);box-shadow:0 28px 90px rgba(0,0,0,.28);text-align:center;}
+.qr-overlay-close{position:absolute;top:16px;right:16px;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(45,31,15,.1);background:rgba(255,255,255,.82);font-size:18px;color:var(--text);cursor:pointer;}
+.qr-overlay-eye{font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.55rem;}
+.qr-overlay-title{font-size:clamp(1.8rem,5vw,2.5rem);line-height:1;font-weight:600;letter-spacing:-.03em;margin-bottom:.55rem;}
+.qr-overlay-sub{font-size:14px;color:var(--muted);margin-bottom:1.4rem;}
+.qr-overlay-code{width:min(100%,260px);margin:0 auto;padding:14px;border-radius:22px;background:#fff;border:1px solid rgba(45,31,15,.08);box-shadow:0 14px 36px rgba(45,31,15,.10);}
+.qr-overlay-code img{display:block;width:100%;height:auto;object-fit:contain;border-radius:14px;}
 
-  16%{transform:translateX(-10%);} 
-  24%{transform:translateX(-10%);} /* 停顿 */
-
-  32%{transform:translateX(-20%);} 
-  40%{transform:translateX(-20%);} /* 停顿 */
-
-  48%{transform:translateX(-30%);} 
-  56%{transform:translateX(-30%);} /* 停顿 */
-
-  64%{transform:translateX(-40%);} 
-  72%{transform:translateX(-40%);} /* 停顿 */
-
-  80%{transform:translateX(-50%);} 
-  100%{transform:translateX(-50%);} /* 结束停顿 */
-}
+.social-feed{padding:0 2rem 5.5rem;background:var(--bg);}
+.social-shell{max-width:1080px;margin:0 auto;padding:2rem;background:linear-gradient(180deg,rgba(237,224,204,.72),rgba(237,224,204,.42));border:1px solid rgba(196,153,106,.18);border-radius:28px;box-shadow:0 20px 50px rgba(45,31,15,.08);}
+.social-head{display:flex;align-items:end;justify-content:space-between;gap:1.5rem;margin-bottom:2rem;}
+.social-head .sec-sub{max-width:620px;margin:0;}
+.social-profile{display:flex;align-items:center;gap:.9rem;margin-bottom:.9rem;}
+.social-profile img{width:52px;height:52px;border-radius:999px;object-fit:cover;border:2px solid rgba(255,255,255,.7);box-shadow:0 10px 24px rgba(45,31,15,.12);}
+.social-profile-copy{display:flex;flex-direction:column;gap:.15rem;}
+.social-profile-copy strong{font-size:.95rem;font-weight:600;color:var(--text);}
+.social-profile-copy span{font-size:12px;color:var(--muted);letter-spacing:.04em;}
+.social-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;}
+.ig-card{display:block;text-decoration:none;color:inherit;background:rgba(255,255,255,.36);border-radius:22px;overflow:hidden;border:1px solid rgba(196,153,106,.14);box-shadow:0 14px 34px rgba(45,31,15,.08);transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
+.ig-card:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(45,31,15,.12);border-color:rgba(196,153,106,.3);}
+.ig-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#efe3d1;}
+.ig-card-body{padding:1rem .95rem 1.05rem;}
+.ig-card-date{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.45rem;}
+.ig-card-title{font-size:1rem;line-height:1.3;color:var(--text);margin-bottom:.35rem;font-family:'Noto Serif SC',serif;}
+.ig-card-link{font-size:12px;color:var(--muted);}
 
 .order{padding:5rem 2rem;background:var(--bg2);text-align:center;}
 .order .sec-title{margin-bottom:.5rem;}
 .order .sec-sub{margin-bottom:2.5rem;}
+.contact-codes{display:grid;grid-template-columns:repeat(2,minmax(0,220px));justify-content:center;gap:1.25rem;margin-top:1rem;}
+.contact-code{text-align:center;}
+.contact-code-label{font-size:12px;color:var(--muted);margin-bottom:.6rem;letter-spacing:.08em;}
+.contact-code-box{width:220px;height:220px;background:#fff;border-radius:18px;border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 36px rgba(45,31,15,.12);}
+.contact-code-box img{width:100%;height:100%;object-fit:contain;padding:12px;background:#fff;border-radius:18px;}
 
 footer{background:var(--dark);padding:3rem 3rem 2rem;}
 .ft{display:flex;justify-content:space-between;align-items:flex-start;gap:3rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.06);}
 .ft-brand{font-size:14px;font-weight:500;color:var(--bg);margin-bottom:.4rem;}
 .ft-tag{font-size:12px;color:rgba(245,237,224,.35);line-height:1.7;}
+.ft-credit{display:inline-block;margin-top:.7rem;font-size:11px;color:rgba(245,237,224,.42);text-decoration:none;letter-spacing:.02em;transition:color .2s;}
+.ft-credit:hover{color:var(--accent);}
 .ft-col-title{font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.7rem;}
 .ft-col a{display:block;font-size:12px;color:rgba(245,237,224,.4);text-decoration:none;margin-bottom:.4rem;transition:color .2s;}
 .ft-col a:hover{color:var(--bg);}
 .ft-copy{text-align:center;font-size:11px;color:rgba(245,237,224,.2);}
 
+@media(max-width:980px){
+  .social-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+
 @media(max-width:700px){
+  .menu-grid{grid-template-columns:1fr;}
+  .menu-set{padding:3rem 1.2rem;}
+  .menu-shell{padding:1.4rem;}
   .grid{grid-template-columns:1fr;}
   .grid-row2{grid-template-columns:1fr;}
   nav{padding:0 1.5rem;}
-  .nav-links{display:none;}
+  .hero-logo{width:min(80vw,300px);}
+  .hero-wordmark{width:min(100%,420px);}
+  .social-feed{padding:0 1.2rem 4rem;}
+  .social-shell{padding:1.35rem;}
+  .social-head{flex-direction:column;align-items:flex-start;}
+  .social-grid{grid-template-columns:1fr;}
+  .contact-codes{grid-template-columns:1fr;}
   .hero,.products,.order{padding-left:1.2rem;padding-right:1.2rem;}
   .ft{flex-direction:column;gap:2rem;}
 }
@@ -112,20 +206,28 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
 
 <nav>
   <div class="nav-logo">Makkie Mua</div>
-  <div class="nav-links">
-    <a href="#products">甜品</a>
-    <a href="#order">预订</a>
-  </div>
   <a href="https://www.instagram.com/makkiemua/" class="nav-ig">@makkiemua</a>
 </nav>
 
 <div class="hero">
+  <video class="hero-logo" autoplay muted loop playsinline preload="auto" aria-label="Makkie Mua waving logo">
+    <source src="makkie-waving-clean.webm?v=20260403-143509" type="video/webm">
+  </video>
   <div class="hero-eyebrow">마키 무아 · 独家创意甜品</div>
-  <h1 class="hero-title">Makkie<br><em>Mua</em></h1>
-  <p class="hero-sub">每一层都是手作的温度 · LA &amp; OC</p>
-  <div class="hero-btns">
-    <a href="https://linktr.ee/makkiemua" class="btn-dark">立即订购</a>
-    <a href="#products" class="btn-ghost">查看甜品</a>
+  <img class="hero-wordmark-art" src="makkie_logo_brown.png" alt="Makkie Mua">
+  <p class="hero-sub">每一层都是手作的温度 · DTLA &amp; OC/Irvine</p>
+  <div class="hero-actions">
+    <div class="hero-btns">
+      <button class="btn-dark" type="button" data-qr-open>立刻预定</button>
+    </div>
+    <div class="hero-links">
+
+      <a href="#menu" class="btn-chip">浏览甜品集</a>
+      <a href="#products" class="btn-chip">探索层层夹心</a>
+      <a href="#instagram" class="btn-chip">Instagram </a>
+      <a href="#order" class="btn-chip">预订详情须知</a>
+      <a href="#footer" class="btn-chip">联系我们</a>
+    </div>
   </div>
 </div>
 
@@ -147,14 +249,329 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
   </div>
 </div>
 
+<section id="menu" class="menu-set">
+  <div class="menu-shell">
+    <div class="menu-head">
+      <div class="sec-eye">浏览甜品集</div>
+      <h2 class="sec-title">Our dessert repertoire</h2>
+    </div>
+    <div class="menu-grid">
+      <button class="menu-card" type="button" data-menu-target="menu-basque">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">巴斯克蛋糕</div>
+          <div class="menu-card-sub">巴斯克的秘密</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+      <button class="menu-card" type="button" data-menu-target="menu-cookie">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">MakkieMua 胖曲奇</div>
+          <div class="menu-card-sub">夹心类产品</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+      <button class="menu-card" type="button" data-menu-target="menu-tart">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">挞挞</div>
+          <div class="menu-card-sub">升级版挞类</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+      <button class="menu-card" type="button" data-menu-target="menu-madeleine">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">米德琳</div>
+          <div class="menu-card-sub">轻甜点</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+      <button class="menu-card" type="button" data-menu-target="menu-chiffon">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">戚风三明治</div>
+          <div class="menu-card-sub">奶油夹心蛋糕</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+      <button class="menu-card" type="button" data-menu-target="menu-millefeuille">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">酥皮 / 拿破仑类</div>
+          <div class="menu-card-sub">层次甜点</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+      <button class="menu-card" type="button" data-menu-target="menu-pudding">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">布丁 / 奶冻 / 慕斯类</div>
+          <div class="menu-card-sub">柔滑口感</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+      <button class="menu-card" type="button" data-menu-target="menu-fusion">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">中式融合甜品</div>
+          <div class="menu-card-sub">中西结合</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+      <button class="menu-card" type="button" data-menu-target="menu-classic">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">经典西点扩展</div>
+          <div class="menu-card-sub">延伸系列</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+      <button class="menu-card" type="button" data-menu-target="menu-creative">
+        <div class="menu-card-heading">
+          <div class="menu-card-title">创意甜品</div>
+          <div class="menu-card-sub">招牌创意</div>
+        </div>
+        <span class="menu-card-icon">查看往期</span>
+      </button>
+    </div>
+    <div class="menu-templates" aria-hidden="true">
+      <div id="menu-basque">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">巴斯克蛋糕</div>
+          <div class="menu-card-sub">焦香绵密，一口就上头</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>提拉米苏巴斯克</li>
+            <li>黑芝麻豆乳巴斯克</li>
+            <li>斑斓芭乐巴斯克</li>
+            <li>伯爵茶巴斯克</li>
+            <li>蔓越莓巴斯克</li>
+            <li>覆盆子巴斯克</li>
+            <li>百香果西米巴斯克</li>
+            <li>绿豆沙巴斯克</li>
+            <li>芋泥巴斯克</li>
+            <li>抹茶巴斯克</li>
+            <li>山楂巴斯克</li>
+            <li>咸蛋黄麻薯巴斯克</li>
+          </ul>
+        </div>
+      </div>
+      <div id="menu-cookie">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">MakkieMua 胖曲奇</div>
+          <div class="menu-card-sub">酥香松软，咬开就有惊喜</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>原味夹心曲奇</li>
+            <li>豆乳曲奇</li>
+            <li>桂花曲奇</li>
+            <li>艾草曲奇</li>
+            <li>咸蛋黄肉松曲奇</li>
+            <li>芋泥曲奇</li>
+            <li>抹茶曲奇</li>
+            <li>酸奶青提曲奇</li>
+            <li>咖啡曲奇</li>
+            <li>斑斓菠萝曲奇</li>
+            <li>玫瑰曲奇</li>
+            <li>焙茶曲奇</li>
+            <li>奶黄曲奇</li>
+            <li>咸蛋黄曲奇</li>
+            <li>可可曲奇</li>
+            <li>开心果面包丝曲奇</li>
+            <li>朗姆提子曲奇</li>
+            <li>燕麦糯米糍曲奇</li>
+            <li>玄米茶曲奇</li>
+            <li>咸奶茶炒米曲奇</li>
+            <li>奶酪柿饼曲奇</li>
+          </ul>
+        </div>
+      </div>
+      <div id="menu-tart">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">蛋挞</div>
+          <div class="menu-card-sub">来上一口轻轻糯糯</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>原味蛋挞</li>
+            <li>伯爵茶蛋挞</li>
+            <li>豆乳蛋挞</li>
+            <li>提拉米苏蛋挞</li>
+            <li>抹茶麻薯蛋挞</li>
+          </ul>
+          <div class="menu-addon">
+            <div class="menu-addon-title">可叠加</div>
+            <ul>
+              <li>提拉米苏奶油顶</li>
+              <li>焙茶奶油顶</li>
+              <li>抹茶奶油顶</li>
+              <li>麻薯夹心</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="menu-madeleine">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">米德琳</div>
+          <div class="menu-card-sub">小小一颗，也能很温柔</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>原味米德琳</li>
+            <li>红枣糯米米德琳</li>
+            <li>柠檬米德琳</li>
+            <li>焙茶米德琳</li>
+            <li>咸豆乳奶酪夹心米德琳</li>
+          </ul>
+        </div>
+      </div>
+      <div id="menu-chiffon">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">戚风三明治</div>
+          <div class="menu-card-sub">云朵一样软，奶香慢慢化开</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>紫苏戚风</li>
+            <li>桂花戚风</li>
+            <li>焙茶戚风</li>
+            <li>伯爵茶戚风</li>
+            <li>斑斓戚风</li>
+            <li>黑芝麻戚风</li>
+          </ul>
+          <div class="menu-addon">
+            <div class="menu-addon-title">组合夹心</div>
+            <ul>
+              <li>芭乐白桃</li>
+              <li>洋梨栗子</li>
+              <li>焙茶柿子</li>
+              <li>草莓红茶布丁</li>
+              <li>芒果椰子糯米</li>
+              <li>酸奶奶油</li>
+              <li>黑芝麻豆乳</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="menu-millefeuille">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">酥皮 / 拿破仑类</div>
+          <div class="menu-card-sub">一层一层，轻轻碎在嘴里</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>开心果火龙果树莓拿破仑</li>
+          </ul>
+        </div>
+      </div>
+      <div id="menu-pudding">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">布丁 / 奶冻 / 慕斯类</div>
+          <div class="menu-card-sub">滑滑软软，适合慢慢吃</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>米布丁</li>
+            <li>红茶慕斯 / 布丁</li>
+            <li>玫瑰奶冻</li>
+            <li>可可奶冻</li>
+            <li>茉莉奶冻</li>
+            <li>香芋海盐奶皮子</li>
+            <li>豆乳慕斯</li>
+            <li>抹茶慕斯</li>
+            <li>芭乐慕斯</li>
+            <li>草莓芭乐慕斯</li>
+            <li>豆腐慕斯</li>
+          </ul>
+        </div>
+      </div>
+      <div id="menu-fusion">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">中式融合甜品</div>
+          <div class="menu-card-sub">熟悉的味道，也能玩出新花样</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>雪媚娘（可做各种口味包裹）</li>
+            <li>麻薯（用于夹心 / 流心）</li>
+            <li>山楂冻 / 桂花冻</li>
+          </ul>
+        </div>
+      </div>
+      <div id="menu-classic">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">经典西点扩展</div>
+          <div class="menu-card-sub">经典口味，做得更细腻一点</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>提拉米苏</li>
+            <li>布丁奶糕</li>
+            <li>玉米奶油蛋糕</li>
+            <li>桂花柿子酒酿奶糕</li>
+            <li>香芋大白兔玫瑰奶糕</li>
+          </ul>
+        </div>
+      </div>
+      <div id="menu-creative">
+        <div class="menu-overlay-header">
+          <div class="menu-card-title">创意甜品</div>
+          <div class="menu-card-sub">脑洞甜品，第一口就记住</div>
+        </div>
+        <div class="menu-content">
+          <ul>
+            <li>迪拜糯曲奇（knafeh + 棉花糖结构）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="products" class="products">
   <div class="sec-eye">本季甜品</div>
-  <h2 class="sec-title">悬停，看见夹心</h2>
-  <p class="sec-sub">每一款都是独家配方，小批量手工现制</p>
+  <h2 class="sec-title">看见夹心</h2>
+  <p class="sec-sub">每一款都是改良配方，小批量手工现制</p>
 
   <div class="grid" style="margin-bottom:2px;">
     <div class="card">
       <div class="card-eye">No.01</div>
+      <div class="card-name"><span>MakkieMua</span><span>胖曲奇</span></div>
+      <div class="card-en">Signature MakkieMua Cookie</div>
+      <div class="scene" style="width:220px;height:200px;">
+        <div class="stack" style="width:220px;height:200px;">
+          <div class="part" style="width:154px;height:58px;top:8px;transform:translateX(-50%) translateZ(5px);">
+            <svg viewBox="0 0 154 58" fill="none" style="width:100%;height:100%;filter:drop-shadow(0 4px 12px rgba(80,50,20,.16))">
+              <path d="M18 28 Q18 10 36 10 L118 10 Q136 10 136 28 L136 58 L18 58 Z" fill="#DDB777"/>
+              <path d="M18 28 Q18 10 36 10 L118 10 Q136 10 136 28" stroke="#BF9150" stroke-width="1.2" fill="none" opacity=".45"/>
+              <circle cx="40" cy="23" r="1.6" fill="#B7894D"/>
+              <circle cx="62" cy="19" r="1.6" fill="#B7894D"/>
+              <circle cx="78" cy="24" r="1.6" fill="#B7894D"/>
+              <circle cx="99" cy="20" r="1.6" fill="#B7894D"/>
+              <circle cx="114" cy="26" r="1.6" fill="#B7894D"/>
+            </svg>
+          </div>
+          <div class="part" style="width:154px;height:52px;top:50px;transform:translateX(-50%) translateZ(3px);">
+            <svg viewBox="0 0 154 52" fill="none" style="width:100%;height:100%;">
+              <path d="M18 22 C26 10 34 8 42 20 C50 8 58 8 66 20 C74 8 82 8 90 20 C98 8 106 8 114 20 C122 8 130 8 136 18" stroke="#F8EEE2" stroke-width="12" stroke-linecap="round" fill="none"/>
+              <path d="M20 30 C28 18 36 16 44 28 C52 16 60 16 68 28 C76 16 84 16 92 28 C100 16 108 16 116 28 C124 16 132 18 136 24" stroke="#FFF7EF" stroke-width="10" stroke-linecap="round" fill="none" opacity=".9"/>
+            </svg>
+          </div>
+          <div class="part" style="width:154px;height:64px;top:86px;transform:translateX(-50%) translateZ(0px);">
+            <svg viewBox="0 0 154 64" fill="none" style="width:100%;height:100%;filter:drop-shadow(0 7px 18px rgba(80,40,10,.18))">
+              <path d="M18 0 Q18 18 36 18 L118 18 Q136 18 136 0 L136 50 Q136 62 124 62 L30 62 Q18 62 18 50 Z" fill="#CFA661"/>
+              <path d="M18 0 Q18 18 36 18 L118 18 Q136 18 136 0" stroke="#B78743" stroke-width="1.2" fill="none" opacity=".4"/>
+              <circle cx="46" cy="33" r="1.6" fill="#B28244"/>
+              <circle cx="72" cy="28" r="1.6" fill="#B28244"/>
+              <circle cx="95" cy="36" r="1.6" fill="#B28244"/>
+              <circle cx="112" cy="30" r="1.6" fill="#B28244"/>
+            </svg>
+          </div>
+          <div class="tag" style="top:18px;left:calc(50% + 108px);">双层饼干</div>
+          <div class="tag" style="top:58px;left:calc(50% + 108px);">轻奶油夹心</div>
+          <div class="tag" style="top:102px;left:calc(50% + 108px);">招牌品牌款</div>
+        </div>
+      </div>
+      <div class="card-foot">招牌饼干夹心 · 轻奶油<br>简洁层次造型</div>
+    </div>
+
+    <div class="card">
+      <div class="card-eye">No.02</div>
       <div class="card-name">戚风三明治</div>
       <div class="card-en">Chiffon Sandwich</div>
       <div class="scene" style="width:220px;height:200px;">
@@ -204,7 +621,7 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
     </div>
 
     <div class="card">
-      <div class="card-eye">No.02</div>
+      <div class="card-eye">No.03</div>
       <div class="card-name">巴斯克芝士蛋糕</div>
       <div class="card-en">Basque Cheesecake</div>
       <div class="scene" style="width:220px;height:200px;">
@@ -251,12 +668,15 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
           <div class="tag" style="top:112px;left:calc(50% + 98px);">饼干底</div>
         </div>
       </div>
-      <div class="card-foot">重芝士 · 烤焦顶 · 软心<br>干花点缀 · 北海道奶油</div>
+      <div class="card-foot">重芝士 · 烤焦顶 · 软心<br>干花点缀 · 高品质动物奶油</div>
     </div>
 
+  </div>
+
+  <div class="grid grid-row2" style="margin:2px auto 0;">
     <div class="card">
-      <div class="card-eye">No.03</div>
-      <div class="card-name">獭祭米布丁</div>
+      <div class="card-eye">No.04</div>
+      <div class="card-name">米布丁</div>
       <div class="card-en">Sake Rice Pudding</div>
       <div class="scene" style="width:220px;height:200px;">
         <div class="stack" style="width:220px;height:200px;">
@@ -298,18 +718,16 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
             </svg>
           </div>
           <div class="tag" style="top:6px;left:calc(50% + 88px);">轻盈奶油顶</div>
-          <div class="tag" style="top:90px;left:calc(50% + 88px);">獭祭米 · 草莓底</div>
+          <div class="tag" style="top:90px;left:calc(50% + 88px);">糯米 · 草莓底</div>
         </div>
       </div>
-      <div class="card-foot">獭祭清酒 · 草莓牛奶<br>打发奶油 · 米粒布丁</div>
+      <div class="card-foot">牛奶<br>奶油 · 米粒布丁</div>
     </div>
-  </div>
 
-  <div class="grid grid-row2" style="margin:2px auto 0;">
     <div class="card">
-      <div class="card-eye">No.04</div>
+      <div class="card-eye">No.05</div>
       <div class="card-name">挞挞</div>
-      <div class="card-en">Butter Tart Cookie</div>
+      <div class="card-en">Tart</div>
       <div class="scene" style="width:220px;height:200px;">
         <div class="stack" style="width:220px;height:200px;">
           <div class="part" style="width:190px;height:60px;top:8px;transform:translateX(-50%) translateZ(5px);">
@@ -345,16 +763,16 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
               <ellipse cx="145" cy="5" rx="8" ry="3" fill="#C47030" opacity=".4"/>
             </svg>
           </div>
-          <div class="tag" style="top:8px;left:calc(50% + 103px);">肉桂糖面 · 花边酥饼</div>
+          <div class="tag" style="top:8px;left:calc(50% + 103px);">糖面 · 花边酥饼</div>
           <div class="tag" style="top:65px;left:calc(50% + 103px);">厚奶油夹心</div>
           <div class="tag" style="top:100px;left:calc(50% + 103px);">花边底饼</div>
         </div>
       </div>
-      <div class="card-foot">花边酥饼 · 厚奶油<br>肉桂糖霜 · 入口即化</div>
+      <div class="card-foot">花边酥饼 · 厚奶油<br>糖霜 · 入口即化</div>
     </div>
 
     <div class="card">
-      <div class="card-eye">No.05</div>
+      <div class="card-eye">No.06</div>
       <div class="card-name">迪拜曲奇</div>
       <div class="card-en">Dubai Cookie</div>
       <div class="scene" style="width:220px;height:200px;">
@@ -405,47 +823,218 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
   </div>
 </section>
 
+<section id="instagram" class="social-feed">
+  <div class="social-shell">
+    <div class="social-profile">
+      <img src="instagram-profile.jpg" alt="Instagram profile picture for @makkiemua" loading="lazy">
+      <div class="social-profile-copy">
+        <strong>@makkiemua</strong>
+        <span>公开主页作品精选</span>
+      </div>
+    </div>
+    <div class="social-head">
+      <div>
+        <div class="sec-eye">Instagram</div>
+        <h2 class="sec-title">最近的甜品动态</h2>
+      </div>
+      <a href="https://www.instagram.com/makkiemua/" class="btn-dark" target="_blank" rel="noreferrer">查看主页</a>
+    </div>
+    <div class="social-grid">
+      <a class="ig-card" href="https://www.instagram.com/p/DWPOt1PD9Pc/" target="_blank" rel="noreferrer">
+        <img src="instagram-1.jpg" alt="Instagram dessert post from March 23, 2026" loading="lazy">
+        <div class="ig-card-body">
+          <div class="ig-card-date">2026.03.23</div>
+          <div class="ig-card-title">春季甜品合集</div>
+          <div class="ig-card-link">点开看完整帖子</div>
+        </div>
+      </a>
+      <a class="ig-card" href="https://www.instagram.com/p/DVZUGt6kis8/" target="_blank" rel="noreferrer">
+        <img src="instagram-2.jpg" alt="Instagram dessert post from March 2, 2026" loading="lazy">
+        <div class="ig-card-body">
+          <div class="ig-card-date">2026.03.02</div>
+          <div class="ig-card-title">草莓提拉米苏系列</div>
+          <div class="ig-card-link">点开看完整帖子</div>
+        </div>
+      </a>
+      <a class="ig-card" href="https://www.instagram.com/p/DVCK1QiEkbP/" target="_blank" rel="noreferrer">
+        <img src="instagram-3.jpg" alt="Instagram dessert post from February 21, 2026" loading="lazy">
+        <div class="ig-card-body">
+          <div class="ig-card-date">2026.02.21</div>
+          <div class="ig-card-title">胖曲奇</div>
+          <div class="ig-card-link">点开看完整帖子</div>
+        </div>
+      </a>
+      <a class="ig-card" href="https://www.instagram.com/p/DUwGQD9Ej6K/" target="_blank" rel="noreferrer">
+        <img src="instagram-4.jpg" alt="Instagram dessert post from February 14, 2026" loading="lazy">
+        <div class="ig-card-body">
+          <div class="ig-card-date">2026.02.14</div>
+          <div class="ig-card-title">抹茶挞挞系列</div>
+          <div class="ig-card-link">点开看完整帖子</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section id="order" class="order">
-  <div class="sec-eye">预订</div>
-  <h2 class="sec-title">小批量手工，新鲜现制</h2>
-  <p class="sec-sub">通过 Instagram DM 预订 · 提前 3–7 天 · LA &amp; OC</p>
+  <div class="sec-eye">预订详情须知</div>
+  <h2 class="sec-title">限量纯手工制作，采用新鲜有机原料</h2>
+  <p class="sec-sub">甜品每周轮换 请通过 WeChat/Instagram DM 预订 · 每周会有新链接 · DTLA &amp; OC/Irvine</p>
   <div style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;">
-    <a href="https://www.instagram.com/makkiemua/" class="btn-dark">Instagram 预订</a>
-    <div style="margin-top:1rem;text-align:center;">
-      <div style="font-size:12px;color:var(--muted);margin-bottom:.6rem;letter-spacing:.08em;">微信咨询</div>
-      <div style="width:140px;height:140px;background:#fff;border-radius:12px;border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;">
-        <img src="Makkie QR Code.jpeg" alt="Makkie Mua QR code" style="width:100%;height:100%;object-fit:contain;padding:8px;background:#fff;border-radius:12px;"/>
+    <div class="contact-codes">
+      <div class="contact-code">
+        <div class="contact-code-label">微信咨询</div>
+        <div class="contact-code-box">
+          <img src="Makkie Wechat QR Code.jpeg" alt="Makkie Mua WeChat QR code"/>
+        </div>
+      </div>
+      <div class="contact-code">
+        <div class="contact-code-label">小红书作品</div>
+        <div class="contact-code-box">
+          <img src="Makkie Rednote QR Code.jpg" alt="Makkie Mua Rednote QR code"/>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
+<footer id="footer">
   <div class="ft">
     <div>
       <div class="ft-brand">Makkie Mua</div>
-      <div class="ft-tag">마키 무아 · 独家创意甜品<br>Butter off with Makkie · LA &amp; OC</div>
+      <div class="ft-tag">마키 무아 · 独家创意甜品<br>Butter off with Makkie · DTLA &amp; OC/Irvine</div>
+      <a class="ft-credit" href="https://www.instagram.com/littlejulia_art/" target="_blank" rel="noreferrer">Makkie 艺术设计 by @littlejulia_art</a>
     </div>
     <div>
       <div class="ft-col-title">菜单</div>
       <div class="ft-col">
-        <a href="#products">戚风三明治</a>
-        <a href="#products">巴斯克芝士</a>
-        <a href="#products">獭祭米布丁</a>
-        <a href="#products">挞挞</a>
-        <a href="#products">迪拜曲奇</a>
+        <a href="#menu">浏览甜品集</a>
+        <a href="#products">探索层层夹心</a>
+        <a href="#instagram">Instagram </a>
+        <a href="#order">预订详情须知</a>
       </div>
     </div>
     <div>
       <div class="ft-col-title">联系</div>
       <div class="ft-col">
         <a href="https://www.instagram.com/makkiemua/">Instagram @makkiemua</a>
-        <a href="https://linktr.ee/makkiemua">Linktree</a>
+        <a href="#">小红书 @MakkieMua</a>
+        <a href="mailto:makkiemua@gmail.com">Email makkiemua@gmail.com</a>
+        <a href="tel:4086468740">Phone 4086468740</a>
       </div>
     </div>
   </div>
   <div class="ft-copy">© 2026 Makkie Mua · 独家创意甜品 · Southern California</div>
 </footer>
+
+<div class="menu-overlay" id="menuOverlay" hidden>
+  <div class="menu-overlay-backdrop" data-menu-close></div>
+  <div class="menu-overlay-panel" role="dialog" aria-modal="true" aria-labelledby="menuOverlayTitle">
+    <button class="menu-overlay-close" type="button" aria-label="关闭菜单" data-menu-close>×</button>
+    <div id="menuOverlayBody"></div>
+  </div>
+</div>
+
+<div class="qr-overlay" id="qrOverlay" hidden>
+  <div class="qr-overlay-backdrop" data-qr-close></div>
+  <div class="qr-overlay-panel" role="dialog" aria-modal="true" aria-labelledby="qrOverlayTitle">
+    <button class="qr-overlay-close" type="button" aria-label="关闭二维码" data-qr-close>×</button>
+    <div class="qr-overlay-eye">WeChat</div>
+    <h2 class="qr-overlay-title" id="qrOverlayTitle">扫码联系</h2>
+    <p class="qr-overlay-sub">打开微信扫一扫，直接联系 Makkie Mua。</p>
+    <div class="qr-overlay-code">
+      <img src="Makkie Wechat QR Code.jpeg" alt="Makkie Mua WeChat QR code">
+    </div>
+  </div>
+</div>
+
+<script>
+const menuOverlay = document.getElementById('menuOverlay');
+const menuOverlayBody = document.getElementById('menuOverlayBody');
+const menuButtons = document.querySelectorAll('[data-menu-target]');
+const menuCloseButtons = document.querySelectorAll('[data-menu-close]');
+const qrOverlay = document.getElementById('qrOverlay');
+const qrOpenButtons = document.querySelectorAll('[data-qr-open]');
+const qrCloseButtons = document.querySelectorAll('[data-qr-close]');
+const menuTaglines = {
+  'menu-basque': '焦香绵密，一口就上头',
+  'menu-cookie': '酥香松软，咬开就有惊喜',
+  'menu-tart': '来上一口轻轻糯糯',
+  'menu-madeleine': '小小一颗，也能很温柔',
+  'menu-chiffon': '云朵一样软，奶香慢慢化开',
+  'menu-millefeuille': '一层一层，轻轻碎在嘴里',
+  'menu-pudding': '滑滑软软，适合慢慢吃',
+  'menu-fusion': '熟悉的味道，也能玩出新花样',
+  'menu-classic': '经典口味，做得更细腻一点',
+  'menu-creative': '脑洞甜品，第一口就记住'
+};
+
+function openMenuOverlay(targetId) {
+  const template = document.getElementById(targetId);
+  if (!template || !menuOverlay || !menuOverlayBody) return;
+
+  menuOverlayBody.innerHTML = template.innerHTML;
+  const title = menuOverlayBody.querySelector('.menu-card-title');
+  if (title) {
+    title.id = 'menuOverlayTitle';
+  }
+
+  menuOverlay.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenuOverlay() {
+  if (!menuOverlay || !menuOverlayBody) return;
+  menuOverlay.hidden = true;
+  menuOverlayBody.innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+function openQrOverlay() {
+  if (!qrOverlay) return;
+  qrOverlay.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQrOverlay() {
+  if (!qrOverlay) return;
+  qrOverlay.hidden = true;
+  document.body.style.overflow = '';
+}
+
+menuButtons.forEach((button) => {
+  const sub = button.querySelector('.menu-card-sub');
+  const tagline = menuTaglines[button.dataset.menuTarget];
+  if (sub && tagline) {
+    sub.textContent = tagline;
+  }
+
+  button.addEventListener('click', () => {
+    openMenuOverlay(button.dataset.menuTarget);
+  });
+});
+
+menuCloseButtons.forEach((button) => {
+  button.addEventListener('click', closeMenuOverlay);
+});
+
+qrOpenButtons.forEach((button) => {
+  button.addEventListener('click', openQrOverlay);
+});
+
+qrCloseButtons.forEach((button) => {
+  button.addEventListener('click', closeQrOverlay);
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && menuOverlay && !menuOverlay.hidden) {
+    closeMenuOverlay();
+  }
+  if (event.key === 'Escape' && qrOverlay && !qrOverlay.hidden) {
+    closeQrOverlay();
+  }
+});
+</script>
 
 </body>
 </html>

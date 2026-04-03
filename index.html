@@ -69,6 +69,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:0 3rem
 .grid-row2{grid-template-columns:repeat(3,1fr);max-width:1080px;}
 
 .card{background:var(--card);padding:3rem 2rem 0;text-align:center;cursor:pointer;position:relative;overflow:visible;}
+.card:focus-visible{outline:2px solid rgba(196,153,106,.72);outline-offset:-2px;}
 .card-eye{font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:.3rem;}
 .card-name{font-size:1.05rem;font-weight:500;color:var(--text);margin-bottom:.2rem;font-family:'Noto Serif SC',serif;}
 .card-name-brand{
@@ -91,15 +92,18 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:0 3rem
 
 .scene{perspective:700px;margin:0 auto;}
 .stack{position:relative;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.34,1.3,.64,1);}
-.card:hover .stack{transform:rotateX(14deg) rotateY(-10deg);}
+.card:hover .stack,
+.card.is-active .stack{transform:rotateX(14deg) rotateY(-10deg);}
 
 .part{position:absolute;left:50%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.34,1.45,.64,1);}
 
 .tag{position:absolute;font-size:9.5px;color:#8A6848;letter-spacing:.05em;white-space:nowrap;background:rgba(245,237,224,.96);padding:2px 9px;border-radius:20px;border:1px solid rgba(196,153,106,.22);opacity:0;transition:opacity .28s .2s, transform .32s .14s;pointer-events:none;transform:translateX(-4px);}
-.card:hover .tag{opacity:1;transform:translateX(0);}
+.card:hover .tag,
+.card.is-active .tag{opacity:1;transform:translateX(0);}
 
 .card-foot{opacity:0;transform:translateY(6px);transition:opacity .3s .1s, transform .3s .1s;padding:1.2rem 0 2.2rem;font-size:11.5px;color:var(--muted);line-height:1.7;}
-.card:hover .card-foot{opacity:1;transform:translateY(0);}
+.card:hover .card-foot,
+.card.is-active .card-foot{opacity:1;transform:translateY(0);}
 
 .marquee{display:none;}
 .menu-set{background:var(--dark);padding:4.5rem 2rem;}
@@ -119,14 +123,14 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:0 3rem
 .menu-overlay[hidden]{display:none;}
 .menu-overlay{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:24px;}
 .menu-overlay-backdrop{position:absolute;inset:0;background:rgba(20,10,4,.72);backdrop-filter:blur(10px);}
-.menu-overlay-panel{position:relative;width:min(100%,860px);max-height:min(88vh,920px);overflow:auto;border-radius:28px;background:#f8eee3;color:var(--text);box-shadow:0 28px 90px rgba(0,0,0,.32);padding:1.5rem;}
+.menu-overlay-panel{position:relative;width:min(100%,860px);max-height:min(88vh,920px);overflow:auto;border-radius:28px;background:#f8eee3;color:var(--text);box-shadow:0 28px 90px rgba(0,0,0,.32);padding:1.5rem;text-align:center;}
 .menu-overlay-close{position:sticky;top:0;margin-left:auto;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;border:1px solid rgba(45,31,15,.1);background:rgba(255,255,255,.82);font-size:18px;color:var(--text);backdrop-filter:blur(8px);cursor:pointer;}
-.menu-overlay-header{padding:.4rem 0 1rem;border-bottom:1px solid rgba(45,31,15,.08);margin-bottom:1.2rem;}
+.menu-overlay-header{padding:.4rem 0 1rem;border-bottom:1px solid rgba(45,31,15,.08);margin-bottom:1.2rem;text-align:center;}
 .menu-overlay-header .menu-card-title{font-family:'Inter',sans-serif;font-size:clamp(2.1rem,5vw,3.4rem);font-weight:600;line-height:.95;letter-spacing:-.03em;color:var(--text);margin-bottom:.3rem;}
 .menu-overlay-header .menu-card-sub{font-size:11px;}
-.menu-content ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;color:#4e3729;font-size:15px;line-height:1.7;}
+.menu-content ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:.45rem;color:#4e3729;font-size:15px;line-height:1.7;text-align:center;width:fit-content;margin:0 auto;}
 .menu-content li{margin:0;}
-.menu-addon{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(245,237,224,.08);}
+.menu-addon{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(245,237,224,.08);text-align:center;}
 .menu-overlay-panel .menu-addon{border-top:1px solid rgba(45,31,15,.08);}
 .menu-addon-title{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,237,224,.45);margin-bottom:.55rem;}
 .menu-overlay-panel .menu-addon-title{color:var(--muted);}
@@ -200,6 +204,10 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
   .hero,.products,.order{padding-left:1.2rem;padding-right:1.2rem;}
   .ft{flex-direction:column;gap:2rem;}
 }
+
+@media (hover:none), (pointer:coarse){
+  .card{padding-bottom:1.8rem;}
+}
 </style>
 </head>
 <body>
@@ -215,7 +223,7 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
   </video>
   <div class="hero-eyebrow">마키 무아 · 独家创意甜品</div>
   <img class="hero-wordmark-art" src="assets/images/brand/makkie_logo_brown.png" alt="Makkie Mua">
-  <p class="hero-sub">每一层都是手作的温度 · DTLA &amp; OC/Irvine</p>
+  <p class="hero-sub">每一层都是手作的温度 · Los Angeles &amp; Orange County</p>
   <div class="hero-actions">
     <div class="hero-btns">
       <button class="btn-dark" type="button" data-qr-open>立刻预定</button>
@@ -265,14 +273,14 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
       </button>
       <button class="menu-card" type="button" data-menu-target="menu-cookie">
         <div class="menu-card-heading">
-          <div class="menu-card-title">MakkieMua 胖曲奇</div>
+          <div class="menu-card-title">Makkie 胖曲奇</div>
           <div class="menu-card-sub">夹心类产品</div>
         </div>
         <span class="menu-card-icon">查看往期</span>
       </button>
       <button class="menu-card" type="button" data-menu-target="menu-tart">
         <div class="menu-card-heading">
-          <div class="menu-card-title">挞挞</div>
+          <div class="menu-card-title">酥皮挞挞</div>
           <div class="menu-card-sub">升级版挞类</div>
         </div>
         <span class="menu-card-icon">查看往期</span>
@@ -293,7 +301,7 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
       </button>
       <button class="menu-card" type="button" data-menu-target="menu-millefeuille">
         <div class="menu-card-heading">
-          <div class="menu-card-title">酥皮 / 拿破仑类</div>
+          <div class="menu-card-title">拿破仑类</div>
           <div class="menu-card-sub">层次甜点</div>
         </div>
         <span class="menu-card-icon">查看往期</span>
@@ -352,7 +360,7 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
       </div>
       <div id="menu-cookie">
         <div class="menu-overlay-header">
-          <div class="menu-card-title">MakkieMua 胖曲奇</div>
+          <div class="menu-card-title">Makkie 胖曲奇</div>
           <div class="menu-card-sub">酥香松软，咬开就有惊喜</div>
         </div>
         <div class="menu-content">
@@ -383,7 +391,7 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
       </div>
       <div id="menu-tart">
         <div class="menu-overlay-header">
-          <div class="menu-card-title">蛋挞</div>
+          <div class="menu-card-title">酥皮挞挞</div>
           <div class="menu-card-sub">来上一口轻轻糯糯</div>
         </div>
         <div class="menu-content">
@@ -395,12 +403,12 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
             <li>抹茶麻薯蛋挞</li>
           </ul>
           <div class="menu-addon">
-            <div class="menu-addon-title">可叠加</div>
+            <div class="menu-addon-title">增加风味</div>
             <ul>
               <li>提拉米苏奶油顶</li>
               <li>焙茶奶油顶</li>
               <li>抹茶奶油顶</li>
-              <li>麻薯夹心</li>
+              <li>糯糯麻薯夹心</li>
             </ul>
           </div>
         </div>
@@ -456,6 +464,7 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
         <div class="menu-content">
           <ul>
             <li>开心果火龙果树莓拿破仑</li>
+            <li>香草玫瑰拿破仑</li>
           </ul>
         </div>
       </div>
@@ -466,8 +475,8 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
         </div>
         <div class="menu-content">
           <ul>
-            <li>米布丁</li>
-            <li>红茶慕斯 / 布丁</li>
+            <li>原味奶香米布丁</li>
+            <li>红茶慕斯米布丁</li>
             <li>玫瑰奶冻</li>
             <li>可可奶冻</li>
             <li>茉莉奶冻</li>
@@ -487,9 +496,10 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
         </div>
         <div class="menu-content">
           <ul>
-            <li>雪媚娘（可做各种口味包裹）</li>
-            <li>麻薯（用于夹心 / 流心）</li>
-            <li>山楂冻 / 桂花冻</li>
+            <li>雪媚娘</li>
+            <li>麻薯</li>
+            <li>山楂冻</li>
+            <li>桂花冻</li>
           </ul>
         </div>
       </div>
@@ -515,7 +525,7 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
         </div>
         <div class="menu-content">
           <ul>
-            <li>迪拜糯曲奇（knafeh + 棉花糖结构）</li>
+            <li>迪拜糯曲奇</li>
           </ul>
         </div>
       </div>
@@ -524,8 +534,8 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
 </section>
 
 <section id="products" class="products">
-  <div class="sec-eye">本季甜品</div>
-  <h2 class="sec-title">看见夹心</h2>
+  <div class="sec-eye">看看里面有什么</div>
+  <h2 class="sec-title">探索层层夹心</h2>
   <p class="sec-sub">每一款都是改良配方，小批量手工现制</p>
 
   <div class="grid" style="margin-bottom:2px;">
@@ -879,7 +889,7 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
 <section id="order" class="order">
   <div class="sec-eye">预订详情须知</div>
   <h2 class="sec-title">限量纯手工制作，采用新鲜有机原料</h2>
-  <p class="sec-sub">甜品每周轮换 请通过 WeChat/Instagram DM 预订 · 每周会有新链接 · DTLA &amp; OC/Irvine</p>
+  <p class="sec-sub">甜品每周轮换 请通过 WeChat/Instagram DM 预订 · 每周会有新链接 · Los Angeles &amp; Orange County</p>
   <div style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;">
     <div class="contact-codes">
       <div class="contact-code">
@@ -902,7 +912,7 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
   <div class="ft">
     <div>
       <div class="ft-brand">Makkie Mua</div>
-      <div class="ft-tag">마키 무아 · 独家创意甜品<br>Butter off with Makkie · DTLA &amp; OC/Irvine</div>
+      <div class="ft-tag">마키 무아 · 独家创意甜品<br>Butter off with Makkie · Los Angeles &amp; Orange County</div>
       <a class="ft-credit" href="https://www.instagram.com/littlejulia_art/" target="_blank" rel="noreferrer">Makkie 艺术设计 by @littlejulia_art</a>
     </div>
     <div>
@@ -919,8 +929,8 @@ footer{background:var(--dark);padding:3rem 3rem 2rem;}
       <div class="ft-col">
         <a href="https://www.instagram.com/makkiemua/">Instagram @makkiemua</a>
         <a href="#">小红书 @MakkieMua</a>
-        <a href="mailto:makkiemua@gmail.com">Email makkiemua@gmail.com</a>
-        <a href="tel:4086468740">Phone 4086468740</a>
+        <a href="mailto:makkiemua@gmail.com">邮箱 makkiemua@gmail.com</a>
+        <a href="tel:4086468740">电话 4086468740</a>
       </div>
     </div>
   </div>
@@ -956,6 +966,8 @@ const menuCloseButtons = document.querySelectorAll('[data-menu-close]');
 const qrOverlay = document.getElementById('qrOverlay');
 const qrOpenButtons = document.querySelectorAll('[data-qr-open]');
 const qrCloseButtons = document.querySelectorAll('[data-qr-close]');
+const productCards = document.querySelectorAll('.card');
+const supportsTouchPreview = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 const menuTaglines = {
   'menu-basque': '焦香绵密，一口就上头',
   'menu-cookie': '酥香松软，咬开就有惊喜',
@@ -968,6 +980,20 @@ const menuTaglines = {
   'menu-classic': '经典口味，做得更细腻一点',
   'menu-creative': '脑洞甜品，第一口就记住'
 };
+
+function setCardExpanded(card, expanded) {
+  if (!card) return;
+  card.classList.toggle('is-active', expanded);
+  card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+}
+
+function collapseCards(exceptCard) {
+  productCards.forEach((card) => {
+    if (card !== exceptCard) {
+      setCardExpanded(card, false);
+    }
+  });
+}
 
 function openMenuOverlay(targetId) {
   const template = document.getElementById(targetId);
@@ -1014,6 +1040,27 @@ menuButtons.forEach((button) => {
   });
 });
 
+productCards.forEach((card) => {
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('role', 'button');
+  card.setAttribute('aria-expanded', 'false');
+
+  card.addEventListener('click', () => {
+    if (!supportsTouchPreview) return;
+    const willExpand = !card.classList.contains('is-active');
+    collapseCards(card);
+    setCardExpanded(card, willExpand);
+  });
+
+  card.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    const willExpand = !card.classList.contains('is-active');
+    collapseCards(card);
+    setCardExpanded(card, willExpand);
+  });
+});
+
 menuCloseButtons.forEach((button) => {
   button.addEventListener('click', closeMenuOverlay);
 });
@@ -1033,6 +1080,15 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && qrOverlay && !qrOverlay.hidden) {
     closeQrOverlay();
   }
+  if (event.key === 'Escape') {
+    collapseCards();
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (!supportsTouchPreview) return;
+  if (event.target.closest('.card')) return;
+  collapseCards();
 });
 </script>
 
